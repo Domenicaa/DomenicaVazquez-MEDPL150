@@ -1,28 +1,40 @@
 <!doctype html>
-
 <html>
-  
   <head>
-    
     <title>Homework 3 Part 2</title>
-    
+    <style>
+      .image-row {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+      .image-row img {
+        max-width: 300px;
+        height: auto;
+        border-radius: 8px; /* optional */
+      }
+    </style>
   </head>
 
   <body>
-
-     <h1 style="color:brown; text-align:center;">Camera Raw filter</h1>
-
-    <br>
+    <h1 style="color:brown; text-align:center;">Camera Raw Filter</h1>
 
     <h2>Image 1</h2>
-    
+    <div class="image-row">
+      <img src="Image01.jpg" alt="Before">
+      <img src="Image1.jpg" alt="After">
+    </div>
+
     <h2>Image 2</h2>
+    <div class="image-row">
+      <img src="Image02.jpg" alt="Before">
+      <img src="Image2.jpg" alt="After">
+    </div>
 
     <br>
     <a href="index.html">Back to Home</a>
     <br>
-    <a href="homework3-part1.hmtl">Homework 3 Part 1</a>
-
-    
+    <a href="homework3-part1.html">Homework 3 Part 1</a>
   </body>
 </html>
