@@ -1,16 +1,1 @@
-.Back to Home {
-  display: inline-block;
-  padding: 8px 16px;
-  font-size: 16px;
-  background-color: #eee;
-  color: #000;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: 0.2s;
-}
 
-.Back to Home:hover {
-  background-color: #ddd;
-}
