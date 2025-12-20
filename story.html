@@ -54,6 +54,22 @@
     button.next {
       font-weight: bold;
     }
+      /* Layout for choices */
+  #choices {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Two-column layout when there are multiple choices */
+  #choices.two-columns {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .choice-block img {
+    margin-top: 10px;
+  }
+
   </style>
 </head>
 
@@ -183,6 +199,13 @@
 
       textEl.textContent = story[scene].text;
       choicesEl.innerHTML = "";
+        // Switch to two columns if there is more than one choice
+  if (story[scene].choices.length > 1) {
+    choicesEl.classList.add("two-columns");
+  } else {
+    choicesEl.classList.remove("two-columns");
+  }
+
 
       if (story[scene].image) {
         imgEl.src = story[scene].image;
