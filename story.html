@@ -108,4 +108,57 @@
       },
 
       savory: {
-        text: "You choose someth
+        text: "You choose something savory.",
+        choices: [
+          { text: "Lasagna", next: "lasagna" },
+          { text: "Ramen", next: "ramen" }
+        ]
+      },
+
+      lasagna: {
+        text: "You burn the pasta sheets.",
+        choices: [{ text: "You eat the meat alone 😐", next: "cry " }]
+      },
+
+      ramen: {
+        text: "You make it extra spicy.",
+        choices: [{ text: "Perfect 🔥", next: "perfect" }]
+      },
+
+      cry: {
+        text: "You cry.",
+        choices: [{ text: "Restart", next: "start" }]
+      },
+
+      perfect: {
+        text: "Perfect.",
+        choices: [{ text: "Restart", next: "start" }]
+      }
+    };
+
+    function showScene(scene) {
+      const textEl = document.getElementById("text");
+      const choicesEl = document.getElementById("choices");
+
+      textEl.textContent = story[scene].text;
+      choicesEl.innerHTML = "";
+
+      story[scene].choices.forEach(choice => {
+        const button = document.createElement("button");
+        button.textContent = choice.text;
+
+        // Add special hover classes ONLY on the start screen
+        if (scene === "start") {
+          if (choice.text === "Go to the park") button.classList.add("park");
+          if (choice.text === "Cook a recipe") button.classList.add("cook");
+        }
+
+        button.onclick = () => showScene(choice.next);
+        choicesEl.appendChild(button);
+      });
+    }
+
+    showScene("start");
+  </script>
+</body>
+</html>
