@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bored at Home</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 40px;
+    }
+
+    #story {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    button {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div id="story">
+  <h1 id="text"></h1>
+  <div id="choices"></div>
+</div>
+
+<script>
+  const story = {
+    start: {
+      text: "You are bored at home.",
+      choices: [
+        { text: "Go to the park", next: "park" },
+        { text: "Cook a recipe", next: "cook" }
+      ]
+    },
+
+    park: {
+      text: "You go to the park.",
+      choices: [
+        { text: "Play basketball", next: "win" },
+        { text: "Ride a bike", next: "bike" }
+      ]
+    },
+
+    win: {
+      text: "You win 🏀",
+      choices: [
+        { text: "Restart", next: "start" }
+      ]
+    },
+
+    bike: {
+      text: "You fall off the bike and hit your face.",
+      choices: [
+        { text: "Restart", next: "start" }
+      ]
+    },
+
+    cook: {
+      text: "You decide to cook a recipe.",
+      choices: [
+        { text: "Sweet", next: "sweet" },
+        { text: "Savory", next: "savory" }
+      ]
+    },
+
+    sweet: {
+      text: "You choose something sweet.",
+      choices: [
+        { text: "Cheesecake", next: "cheesecake" },
+        { text: "Banana bread", next: "banana" }
+      ]
+    },
+
+    cheesecake: {
+      text: "You put salt instead of sugar.",
+      choices: [
+        { text: "You cry 😭", next: "cry" }
+      ]
+    },
+
+    banana: {
+      text: "You eat banana bread with ice cream.",
+      choices: [
+        { text: "Restart", next: "start" }
+      ]
+    },
+
+    savory: {
+      text: "You choose something savory.",
+      choices: [
+        { text: "Lasagna", next: "lasagna" },
+        { text: "Ramen", next: "ramen" }
+      ]
+    },
+
+    lasagna: {
+      text: "You burn the pasta sheets.",
+      choices: [
+        { text: "You eat the meat alone 😐", next: "cry" }
+      ]
+    },
+
+    ramen: {
+      text: "You make it extra spicy.",
+      choices: [
+        { text: "Perfect 🔥", next: "perfect" }
+      ]
+    },
+
+    cry: {
+      text: "You cry.",
+      choices: [
+        { text: "Restart", next: "start" }
+      ]
+    },
+
+    perfect: {
+      text: "Perfect.",
+      choices: [
+        { text: "Restart", next: "start" }
+      ]
+    }
+  };
+
+  function showScene(scene) {
+    const textEl = document.getElementById("text");
+    const choicesEl = document.getElementById("choices");
+
+    textEl.textContent = story[scene].text;
+    choicesEl.innerHTML = "";
+
+    story[scene].choices.forEach(choice => {
+      const button = document.createElement("button");
+      button.textContent = choice.text;
+      button.onclick = () => showScene(choice.next);
+      choicesEl.appendChild(button);
+    });
+  }
+
+  showScene("start");
+</script>
+
+</body>
+</html>
